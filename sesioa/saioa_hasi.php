@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db.php';
+require_once '../includes/db.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -21,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_role'] = $erabiltzailea['rola'];
 
             if ($erabiltzailea['rola'] === 'barber' || $erabiltzailea['rola'] === 'admin') {
-                header('Location: langile_panela.php');
+                header('Location: ../langileak_php/langile_panela.php');
             } else {
-                header('Location: bezero_panela.php');
+                header('Location: ../bezeroak_php/bezero_panela.php');
             }
             exit;
         } else {
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $pageTitle = 'Tristras - Saio Hasiera';
-require_once 'includes/header.php';
+require_once '../includes/header.php';
 ?>
 
 <!-- Ambient Glow Effects -->
@@ -45,7 +45,7 @@ require_once 'includes/header.php';
 <div class="relative w-full max-w-[480px] min-h-screen flex flex-col z-10 p-4 mx-auto">
     <!-- Header -->
     <div class="flex items-center justify-between py-4">
-        <a href="index.php" class="text-white hover:text-primary transition-colors flex size-10 shrink-0 items-center justify-center rounded-full active:bg-surface-dark">
+        <a href="../index.php" class="text-white hover:text-primary transition-colors flex size-10 shrink-0 items-center justify-center rounded-full active:bg-surface-dark">
             <span class="material-symbols-outlined text-[24px]">arrow_back</span>
         </a>
         <h1 class="titulu-ertaina">Hasi saioa</h1>
@@ -57,7 +57,7 @@ require_once 'includes/header.php';
         <div class="w-full relative overflow-hidden rounded-2xl aspect-[16/9] shadow-2xl ring-1 ring-white/10 group">
             <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80 z-10"></div>
             <div class="w-full h-full bg-center bg-cover bg-no-repeat transition-transform duration-700 group-hover:scale-105" 
-                 style="background-image: url('images/hero_barber.png');">
+                 style="background-image: url('../irudiak/hero_barber.png');">
             </div>
             <div class="absolute bottom-4 left-4 z-20">
                 <div class="etiketa-txikia mb-1">Ongi etorri</div>
@@ -168,6 +168,6 @@ $(document).ready(function() {
 });
 </script>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>
 
 

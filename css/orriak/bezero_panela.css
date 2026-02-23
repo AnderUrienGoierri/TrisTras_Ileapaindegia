@@ -1,0 +1,269 @@
+/* bezero_panela.css */
+
+.pantaila-nagusia {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 6rem;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.giro-efektu-bilgarria {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 500px;
+    width: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.giro-argia-1 {
+    position: absolute;
+    top: -5rem;
+    right: -5rem;
+    width: 24rem;
+    height: 24rem;
+    background-color: rgba(71, 39, 150, 0.2);
+    border-radius: 9999px;
+    filter: blur(100px);
+}
+
+.giro-argia-2 {
+    position: absolute;
+    top: 10rem;
+    left: -5rem;
+    width: 18rem;
+    height: 18rem;
+    background-color: rgba(20, 184, 166, 0.1);
+    border-radius: 9999px;
+    filter: blur(80px);
+}
+
+.panela-goiburukoa {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    padding-top: 3rem;
+    padding-bottom: 0.5rem;
+}
+
+.avatar-bilgarria-txikia {
+    position: relative;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 9999px;
+    overflow: hidden;
+    border: 2px solid rgba(71, 39, 150, 0.3);
+    background-color: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botoi-menua-txikia {
+    display: flex;
+    height: 2.5rem;
+    width: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: rgba(30, 41, 59, 0.5);
+    color: #e2e8f0;
+    transition: background-color 0.2s;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.botoi-menua-txikia:hover {
+    background-color: rgba(71, 39, 150, 0.2);
+}
+
+.hitzordu-atala {
+    position: relative;
+    z-index: 10;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1.5rem;
+}
+
+.txartel-gradientea {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right, rgba(71, 39, 150, 0.2), transparent);
+    opacity: 0.5;
+}
+
+.txartel-edukia {
+    position: relative;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.egoera-etiketa-baieztatua {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: rgba(34, 197, 94, 0.2);
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    color: #4ade80;
+}
+
+.hitzordu-irudi-bilgarria {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 0.75rem;
+    background-color: #334155;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.data-lerroa {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #e2e8f0;
+}
+
+.ordu-lerroa {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #94a3b8;
+}
+
+.txartel-oina {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(51, 65, 85, 0.5);
+    margin-top: 0.25rem;
+}
+
+.zerbitzu-atala-nagusia {
+    position: relative;
+    z-index: 10;
+    margin-top: 2rem;
+    flex: 1 1 0%;
+}
+
+.zerbitzu-zerrenda-horizontala {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 1rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+}
+
+.zerbitzu-zerrenda-horizontala::-webkit-scrollbar {
+    display: none;
+}
+
+.zerbitzu-elementua {
+    flex: none;
+    width: 16rem;
+    scroll-snap-align: center;
+    cursor: pointer;
+}
+
+.zerbitzu-txartel-txikia {
+    position: relative;
+    height: 20rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: #1e293b;
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.zerbitzu-txartel-gradientea {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to top, #0f172a, transparent, transparent);
+    z-index: 10;
+    opacity: 0.9;
+}
+
+.zerbitzu-txartel-testua {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.akzio-botoi-bilgarria {
+    position: fixed;
+    bottom: 6rem;
+    right: 1rem;
+    z-index: 30;
+}
+
+.beheko-nabigazio-barra {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 40;
+}
+
+.nabigazio-edukiontzia {
+    background-color: rgba(15, 23, 42, 0.9);
+    border-top: 1px solid #1e293b;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    padding-bottom: 1.5rem;
+    padding-top: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nabigazio-elementua {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.nabigazio-ikonoa-aktiboa {
+    color: var(--primary);
+    padding: 0.375rem;
+    border-radius: 9999px;
+    background-color: rgba(71, 39, 150, 0.1);
+    transition: color 0.2s;
+}
+
+.nabigazio-ikonoa-ez-aktiboa {
+    color: #94a3b8;
+    padding: 0.375rem;
+    transition: color 0.2s;
+}
+
+.nabigazio-elementua:hover .nabigazio-ikonoa-ez-aktiboa {
+    color: var(--primary);
+}

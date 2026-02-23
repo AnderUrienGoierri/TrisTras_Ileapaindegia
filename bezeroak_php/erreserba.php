@@ -1,11 +1,11 @@
 <?php
-require_once 'includes/db.php';
+require_once '../includes/db.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: saioa_hasi.php');
+    header('Location: ../sesioa/saioa_hasi.php');
     exit;
 }
 
@@ -63,12 +63,13 @@ $langileak = $langileakStmt->fetchAll();
 $hautatutakoZerbitzuId = $_GET['service'] ?? null;
 
 $pageTitle = 'Tristras - Erreserba';
-require_once 'includes/header.php';
+$pageCSS = 'erreserba.css';
+require_once '../includes/header.php';
 ?>
 
-<header class="fixed top-0 z-50 w-full bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
-    <div class="flex items-center justify-between px-4 h-14 max-w-md mx-auto">
-        <a href="bezero_panela.php" class="flex items-center justify-center size-10 rounded-full hover:bg-white/10 transition-colors text-white">
+<header class="erreserba-goiburukoa shadow-lg">
+    <div class="erreserba-goiburuko-edukia">
+        <a href="bezero_panela.php" class="botoi-itzuli-txikia text-white">
             <span class="material-symbols-outlined">arrow_back_ios_new</span>
         </a>
         <h1 class="titulu-ertaina">Erreserba</h1>
@@ -76,7 +77,7 @@ require_once 'includes/header.php';
     </div>
 </header>
 
-<main class="w-full pt-20 px-4 flex flex-col gap-8 max-w-md mx-auto pb-40">
+<main class="erreserba-nagusia">
     <form id="erreserbaInprimakia" method="POST" action="ordainketa.php">
         <input type="hidden" name="submit_booking" value="1">
         <input type="hidden" name="service_id" id="service_id" value="<?= $hautatutakoZerbitzuId ?>">
@@ -85,17 +86,17 @@ require_once 'includes/header.php';
         <input type="hidden" name="time" id="time" value="">
 
         <!-- Atala: Zerbitzuak -->
-        <section class="mb-8">
+        <section class="atala-bilgarria">
             <h2 class="titulu-nagusia mb-4">Aukeratu Zerbitzua</h2>
-            <div class="flex flex-col gap-4">
+            <div class="zerbitzu-zerrend">
                 <?php foreach ($zerbitzuak as $zerb): ?>
-                <div class="zerbitzu-txartela beira-txartela rounded-xl p-4 flex gap-4 items-center cursor-pointer transition-all duration-200 hover:bg-white/5 relative overflow-hidden group <?= ($hautatutakoZerbitzuId == $zerb['id']) ? 'border-primary shadow-glow' : '' ?>" 
+                <div class="zerbitzu-hautagai-txartela beira-txartela rounded-xl p-4 <?= ($hautatutakoZerbitzuId == $zerb['id']) ? 'aktiboa' : '' ?>" 
                      data-id="<?= $zerb['id'] ?>" data-price="<?= $zerb['prezioa'] ?>">
                     <?php if ($hautatutakoZerbitzuId == $zerb['id']): ?>
-                        <div class="absolute inset-0 bg-primary/10"></div>
-                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+                        <div class="txartela-aktiboa-bilgarria"></div>
+                        <div class="txartela-aktiboa-marra"></div>
                     <?php endif; ?>
-                    <div class="size-16 rounded-lg bg-cover bg-center shrink-0 shadow-lg" style="background-image: url('<?= htmlspecialchars($zerb['irudia']) ?>');"></div>
+                    <div class="txartel-irudi-txikia" style="background-image: url('../<?= htmlspecialchars($zerb['irudia']) ?>');"></div>
                     <div class="flex-1 min-w-0">
                         <div class="flex justify-between items-start mb-1">
                             <h3 class="titulu-txikia truncate pr-2"><?= htmlspecialchars($zerb['izena']) ?></h3>
@@ -114,23 +115,23 @@ require_once 'includes/header.php';
         </section>
 
         <!-- Atala: Barberoa hautatu -->
-        <section class="mb-8">
+        <section class="atala-bilgarria">
             <h2 class="titulu-nagusia mb-4">Aukeratu Barberoa</h2>
-            <div class="flex gap-6 overflow-x-auto korritze-barra-ezkutatu pb-2 px-1">
+            <div class="barber-zerrenda-horizontala korritze-barra-ezkutatu px-1">
                 <?php foreach ($langileak as $langilea): ?>
-                <div class="langile-txartela flex flex-col items-center gap-2 cursor-pointer group min-w-[70px]" data-id="<?= $langilea['id'] ?>">
-                    <div class="relative avatar-ingurua">
-                        <div class="avatar-eraztuna size-16 rounded-full p-0.5 bg-transparent border border-slate-700 transition-all">
+                <div class="barber-elementua group" data-id="<?= $langilea['id'] ?>">
+                    <div class="relative">
+                        <div class="avatar-eraztun-barber">
                             <?php if ($langilea['irudia']): ?>
                                 <img alt="<?= htmlspecialchars($langilea['izena']) ?>" class="w-full h-full rounded-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" 
-                                     src="<?= htmlspecialchars($langilea['irudia']) ?>">
+                                     src="../<?= htmlspecialchars($langilea['irudia']) ?>">
                             <?php else: ?>
                                 <div class="w-full h-full rounded-full bg-slate-700 flex items-center justify-center">
                                     <span class="material-symbols-outlined text-slate-500">person</span>
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <div class="baieztapen-txapa absolute bottom-0 right-0 bg-primary text-white rounded-full p-0.5 border-2 border-background-dark hidden">
+                        <div class="baieztapen-etiketa-txikia hidden">
                             <span class="material-symbols-outlined text-[12px] block">check</span>
                         </div>
                     </div>
@@ -141,9 +142,9 @@ require_once 'includes/header.php';
         </section>
 
         <!-- Atala: Eguna hautatu -->
-        <section class="mb-8">
+        <section class="atala-bilgarria">
             <h2 class="titulu-nagusia mb-4">Aukeratu Eguna</h2>
-            <div class="beira-txartela rounded-xl p-4 mb-6">
+            <div class="beira-txartela data-hautatzaile-txartela rounded-xl p-4">
                 <div class="flex justify-between items-center text-center">
                     <?php 
                     $today = new DateTime();
@@ -151,9 +152,9 @@ require_once 'includes/header.php';
                         $curr = clone $today;
                         $curr->modify("+$i days");
                     ?>
-                    <div class="data-hautatzailea flex flex-col gap-1 w-10 cursor-pointer <?= ($i==0)?'active-date':'' ?>" data-date="<?= $curr->format('Y-m-d') ?>">
+                    <div class="data-elementua <?= ($i==0)?'aktiboa':'' ?>" data-date="<?= $curr->format('Y-m-d') ?>">
                         <span class="etiketa-txikia"><?= $curr->format('D') ?></span>
-                        <div class="data-zenbakia w-10 h-10 flex items-center justify-center rounded-full transition-all <?= ($i==0)?'bg-primary text-white shadow-glow':'text-slate-300 hover:bg-white/5' ?>">
+                        <div class="data-txapela <?= ($i==0)?'aktiboa':'' ?>">
                             <?= $curr->format('d') ?>
                         </div>
                     </div>
@@ -162,12 +163,11 @@ require_once 'includes/header.php';
             </div>
 
             <h3 class="titulu-txikia mb-3">Ordua</h3>
-            <div class="grid grid-cols-4 gap-3 mb-6">
+            <div class="ordu-sareta">
                 <?php 
                 $slots = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '15:00', '15:30', '16:00', '16:30'];
                 foreach($slots as $slot): ?>
-                <button type="button" class="ordu-tarte-botoia py-2 px-1 rounded-lg border border-slate-700 text-slate-400 text-sm font-medium hover:border-slate-500 hover:text-white transition-all" 
-                        data-time="<?= $slot ?>:00">
+                <button type="button" class="ordu-botoia" data-time="<?= $slot ?>:00">
                     <?= $slot ?>
                 </button>
                 <?php endforeach; ?>
@@ -177,7 +177,7 @@ require_once 'includes/header.php';
 </main>
 
 <!-- Fixed Bottom Bar -->
-<div class="fixed bottom-0 left-0 w-full bg-slate-900/80 backdrop-blur-xl border-t border-white/5 p-4 safe-area-bottom pb-8 z-50">
+<div class="erreserba-beheko-barra safe-area-bottom">
     <div class="max-w-md mx-auto flex items-center justify-between gap-6">
         <div class="flex flex-col">
             <span class="etiketa-txikia">Guztira</span>
@@ -185,7 +185,7 @@ require_once 'includes/header.php';
                 <span id="prezioaErakutsi" class="titulu-nagusia">0,00€</span>
             </div>
         </div>
-        <button type="button" id="erreserbaBaieztatuBotoia" class="flex-1 botoi-premium shadow-glow opacity-50 cursor-not-allowed">
+        <button type="button" id="erreserbaBaieztatuBotoia" class="flex-1 botoi-premium shadow-lg opacity-50 cursor-not-allowed">
             <span>Erreserbatu</span>
             <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
         </button>
@@ -206,11 +206,11 @@ $(document).ready(function() {
     }
 
     // Zerbitzua hautatzea
-    $('.zerbitzu-txartela').click(function() {
-        $('.zerbitzu-txartela').removeClass('border-primary shadow-glow').find('.absolute').remove();
-        $('.zerbitzu-txartela .check-icon').addClass('hidden');
+    $('.zerbitzu-hautagai-txartela').click(function() {
+        $('.zerbitzu-hautagai-txartela').removeClass('aktiboa').find('.txartela-aktiboa-bilgarria, .txartela-aktiboa-marra').remove();
+        $('.zerbitzu-hautagai-txartela .check-icon').addClass('hidden');
         
-        $(this).addClass('border-primary shadow-glow').prepend('<div class="absolute inset-0 bg-primary/10"></div><div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>');
+        $(this).addClass('aktiboa').prepend('<div class="txartela-aktiboa-bilgarria"></div><div class="txartela-aktiboa-marra"></div>');
         $(this).find('.check-icon').removeClass('hidden');
         
         hautatutakoZerbitzua = $(this).data('id');
@@ -220,15 +220,13 @@ $(document).ready(function() {
     });
 
     // Barberoa hautatzea
-    $('.langile-txartela').click(function() {
-        $('.avatar-eraztuna').removeClass('bg-gradient-to-br from-primary to-purple-400 ring-2 ring-primary ring-offset-2 ring-offset-background-dark shadow-glow border-none');
-        $('.avatar-eraztuna img').addClass('opacity-70');
-        $('.baieztapen-txapa').addClass('hidden');
+    $('.barber-elementua').click(function() {
+        $('.barber-elementua').removeClass('aktiboa');
+        $('.baieztapen-etiketa-txikia').addClass('hidden');
         $('.langile-izena').removeClass('text-white').addClass('text-slate-400');
 
-        $(this).find('.avatar-eraztuna').addClass('bg-gradient-to-br from-primary to-purple-400 ring-2 ring-primary ring-offset-2 ring-offset-background-dark shadow-glow border-none');
-        $(this).find('img').removeClass('opacity-70');
-        $(this).find('.baieztapen-txapa').removeClass('hidden');
+        $(this).addClass('aktiboa');
+        $(this).find('.baieztapen-etiketa-txikia').removeClass('hidden');
         $(this).find('.langile-izena').removeClass('text-slate-400').addClass('text-white');
 
         hautatutakoLangilea = $(this).data('id');
@@ -237,9 +235,9 @@ $(document).ready(function() {
     });
 
     // Data hautatzea
-    $('.data-hautatzailea').click(function() {
-        $('.data-hautatzailea .data-zenbakia').removeClass('bg-primary text-white shadow-glow').addClass('text-slate-300');
-        $(this).find('.data-zenbakia').addClass('bg-primary text-white shadow-glow').removeClass('text-slate-300');
+    $('.data-elementua').click(function() {
+        $('.data-elementua, .data-txapela').removeClass('aktiboa');
+        $(this).addClass('aktiboa').find('.data-txapela').addClass('aktiboa');
         
         hautatutakoData = $(this).data('date');
         $('#date').val(hautatutakoData);
@@ -247,9 +245,9 @@ $(document).ready(function() {
     });
 
     // Ordua hautatzea
-    $('.ordu-tarte-botoia').click(function() {
-        $('.ordu-tarte-botoia').removeClass('bg-primary border-transparent text-white shadow-glow ring-2 ring-primary ring-offset-1 ring-offset-background-dark').addClass('border-slate-700 text-slate-400');
-        $(this).removeClass('border-slate-700 text-slate-400').addClass('bg-primary border-transparent text-white shadow-glow ring-2 ring-primary ring-offset-1 ring-offset-background-dark');
+    $('.ordu-botoia').click(function() {
+        $('.ordu-botoia').removeClass('aktiboa');
+        $(this).addClass('aktiboa');
         
         hautatutakoOrdua = $(this).data('time');
         $('#time').val(hautatutakoOrdua);
@@ -258,9 +256,9 @@ $(document).ready(function() {
 
     function balidatu() {
         if (hautatutakoZerbitzua && hautatutakoLangilea && hautatutakoData && hautatutakoOrdua) {
-            $('#erreserbaBaieztatuBotoia').removeClass('opacity-50 cursor-not-allowed').addClass('hover:bg-[#5a32b6]');
+            $('#erreserbaBaieztatuBotoia').removeClass('opacity-50 cursor-not-allowed');
         } else {
-            $('#erreserbaBaieztatuBotoia').addClass('opacity-50 cursor-not-allowed').removeClass('hover:bg-[#5a32b6]');
+            $('#erreserbaBaieztatuBotoia').addClass('opacity-50 cursor-not-allowed');
         }
     }
 
@@ -272,6 +270,6 @@ $(document).ready(function() {
 });
 </script>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>
 
 

@@ -1,0 +1,94 @@
+/* ezarpenak.css */
+
+.pantaila-nagusia {
+    position: relative;
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.ezarpenak-goiburukoa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    z-index: 10;
+}
+
+.profil-atal-txikia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.editatu-txapa {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.375rem;
+    border-radius: 9999px;
+    border: 2px solid #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.ezarpen-botoia {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    transition: background-color 0.2s;
+    background: transparent;
+    border: none;
+    text-align: left;
+}
+
+.ezarpen-botoia:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.ezarpen-ikono-bilgarria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+
+.botoi-saioa-itxi-lineala {
+    width: 100%;
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    color: #ef4444;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    transition: background-color 0.2s;
+    margin-bottom: 2rem;
+}
+
+.botoi-saioa-itxi-lineala:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}

@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db.php';
+require_once '../includes/db.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $pageTitle = 'Tristras - Erregistratu';
-require_once 'includes/header.php';
+require_once '../includes/header.php';
 ?>
 
 <!-- Ambient Glow Effects -->
@@ -124,6 +124,6 @@ require_once 'includes/header.php';
     </div>
 </div>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>
 
 

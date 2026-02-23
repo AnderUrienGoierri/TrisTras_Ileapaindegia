@@ -4,6 +4,19 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 $pageTitle = $pageTitle ?? 'Barber App';
+
+// Kalkulatu bidea erroarekiko (root)
+$isSubdir = strpos($_SERVER['REQUEST_URI'], '_php') !== false || strpos($_SERVER['REQUEST_URI'], 'sesioa') !== false;
+$basePath = $isSubdir ? '../' : '';
+
+// Rolak eta bideak
+$userRole = $_SESSION['user_role'] ?? '';
+$dashboardLink = 'index.php';
+if ($userRole === 'client') {
+    $dashboardLink = $basePath . 'bezeroak_php/bezero_panela.php';
+} elseif ($userRole === 'barber' || $userRole === 'admin') {
+    $dashboardLink = $basePath . 'langileak_php/langile_panela.php';
+}
 ?>
 <!DOCTYPE html>
 <html lang="eu" class="dark">
@@ -57,11 +70,14 @@ $pageTitle = $pageTitle ?? 'Barber App';
     </script>
     
     <!-- Estilo Pertsonalizatuak -->
-    <link rel="stylesheet" href="css/estiloak.css">
+    <link rel="stylesheet" href="<?= $basePath ?>css/estiloak.css">
+    <?php if (isset($pageCSS)): ?>
+    <link rel="stylesheet" href="<?= $basePath ?>css/orriak/<?= $pageCSS ?>">
+    <?php endif; ?>
     
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="<?= $basePath ?>js/scripts.js"></script>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary selection:text-white pb-24 min-h-screen overflow-x-hidden">
 
@@ -77,24 +93,35 @@ $pageTitle = $pageTitle ?? 'Barber App';
         </div>
         
         <nav class="flex flex-col gap-6 flex-1">
-            <a href="bezero_panela.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
+            <a href="<?= $dashboardLink ?>" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
                 <span class="material-symbols-outlined group-hover:scale-110 transition-transform">home</span>
                 <span class="font-medium">Hasiera</span>
             </a>
-            <a href="bezero_hitzorduak.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">calendar_month</span>
-                <span class="font-medium">Nire Hitzorduak</span>
-            </a>
-            <a href="bezero_profila.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
-                <span class="font-medium">Profila</span>
-            </a>
-            <a href="ezarpenak.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">settings</span>
-                <span class="font-medium">Ezarpenak</span>
-            </a>
+            <?php if ($userRole === 'client'): ?>
+                <a href="<?= $basePath ?>bezeroak_php/bezero_hitzorduak.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">calendar_month</span>
+                    <span class="font-medium">Nire Hitzorduak</span>
+                </a>
+                <a href="<?= $basePath ?>bezeroak_php/bezero_profila.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+                    <span class="font-medium">Profila</span>
+                </a>
+                <a href="<?= $basePath ?>bezeroak_php/ezarpenak.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">settings</span>
+                    <span class="font-medium">Ezarpenak</span>
+                </a>
+            <?php elseif ($userRole === 'barber' || $userRole === 'admin'): ?>
+                <a href="<?= $basePath ?>langileak_php/bezero_zerrenda.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">group</span>
+                    <span class="font-medium">Bezeroak</span>
+                </a>
+                <a href="<?= $basePath ?>langileak_php/langile_profila.php" class="flex items-center gap-4 text-slate-300 hover:text-primary transition-colors group">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+                    <span class="font-medium">Profila</span>
+                </a>
+            <?php endif; ?>
             <div class="h-px bg-white/5 my-2"></div>
-            <a href="saioa_itxi.php" class="flex items-center gap-4 text-red-400 hover:text-red-300 transition-colors group">
+            <a href="<?= $basePath ?>sesioa/saioa_itxi.php" class="flex items-center gap-4 text-red-400 hover:text-red-300 transition-colors group">
                 <span class="material-symbols-outlined group-hover:scale-110 transition-transform">logout</span>
                 <span class="font-medium">Saioa itxi</span>
             </a>

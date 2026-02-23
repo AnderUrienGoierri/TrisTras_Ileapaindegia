@@ -1,0 +1,109 @@
+/* langile_panela.css */
+
+.pantaila-nagusia {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.egoera-kontrola {
+    margin-bottom: 1.5rem;
+}
+
+.egoera-aldatzailea {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.estatistika-txartela-nagusia {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.estatistika-txartela {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+}
+
+.hitzordu-txartela-langile {
+    padding: 1.25rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.hitzordu-txartela-langile.osatuta {
+    opacity: 0.6;
+    border-color: transparent;
+}
+
+.ordu-adierazlea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.5rem;
+    background-color: rgba(15, 23, 42, 0.5);
+    border-radius: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.nabigazio-barra-langile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: #0f172a;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 1.25rem;
+    padding-top: 0.75rem;
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 40;
+}
+
+.nabigazio-botoia-langile {
+    display: flex;
+    flex: 1 1 0%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    border-radius: 0.75rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    transition: all 0.2s;
+    color: #94a3b8;
+}
+
+.nabigazio-botoia-langile.aktiboa {
+    color: var(--primary);
+}

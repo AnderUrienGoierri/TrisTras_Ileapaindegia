@@ -92,7 +92,7 @@
 
 /* Hero eta Atzeko planoko estiloak */
 .hero-irudia {
-    background-image: url('../images/hero_barber.png');
+    background-image: url('../irudiak/hero_barber.png');
     background-size: cover;
     background-position: center;
 }

@@ -45,7 +45,7 @@ require_once 'includes/header.php';
         <!-- Akzio Eremua -->
         <div class="flex flex-col gap-4 w-full">
             <!-- Erreserba Botoi Nagusia -->
-            <a href="saioa_hasi.php" class="group relative w-full h-14 overflow-hidden rounded-xl shadow-[0_0_20px_rgba(20,184,166,0.3)] transition-all hover:scale-[1.02] active:scale-[0.98] block">
+            <a href="sesioa/saioa_hasi.php" class="group relative w-full h-14 overflow-hidden rounded-xl shadow-[0_0_20px_rgba(20,184,166,0.3)] transition-all hover:scale-[1.02] active:scale-[0.98] block">
                 <div class="absolute inset-0 bg-gradient-to-r from-teal-500 to-emerald-500 transition-all group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:to-emerald-400"></div>
                 <div class="relative flex items-center justify-center gap-2 h-full w-full">
                     <span class="text-white text-lg font-bold tracking-wide">Erreserbatu Nire Hitzordua</span>
@@ -60,9 +60,9 @@ require_once 'includes/header.php';
                     <span class="testu-lagungarria text-xs">Kudeatu zure erreserbak erraz</span>
                 </div>
                 <div class="flex items-center gap-4 text-sm font-semibold tracking-wide">
-                    <a href="saioa_hasi.php" class="testu-lagungarria hover:text-white transition-colors py-2">Hasi saioa</a>
+                    <a href="sesioa/saioa_hasi.php" class="testu-lagungarria hover:text-white transition-colors py-2">Hasi saioa</a>
                     <div class="h-4 w-[1px] bg-slate-600"></div>
-                    <a href="erregistratu.php" class="text-accent-teal hover:text-teal-300 transition-colors py-2 flex items-center gap-1 group/link">
+                    <a href="sesioa/erregistratu.php" class="text-accent-teal hover:text-teal-300 transition-colors py-2 flex items-center gap-1 group/link">
                         Erregistratu
                         <span class="material-symbols-outlined transition-transform group-hover/link:translate-x-1 ikono-sm">arrow_forward</span>
                     </a>

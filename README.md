@@ -35,13 +35,15 @@ Aplikazioak **Glassmorphism** estetika erabiltzen du, dark theme premium batekin
 ## 📂 Proiektuaren Egitura
 
 ```text
-├── css/            # Estilo fitxategiak (estiloak.css)
+├── css/            # Estilo fitxategiak (estiloak.css, orriak/)
 ├── js/             # Script lagungarriak
 ├── includes/       # PHP modularra (db connection, header, footer)
-├── images/         # Asset grafikoak eta hero irudiak
+├── irudiak/        # Asset grafikoak eta hero irudiak
 ├── sql/            # Datubasearen setup scriptak (Basque schema)
+├── sesioa/         # Saio kudeaketarako PHP fitxategiak
+├── bezeroak_php/   # Bezeroen paneleko orriak
+├── langileak_php/  # Langileen paneleko orriak
 ├── index.php       # Landing page nagusia
-└── ...             # PHP orri funtzionalak (saioa_hasi, bezero_panela, etc.)
 ```
 
 ## ⚙️ Instalazioa

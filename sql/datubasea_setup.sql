@@ -76,7 +76,7 @@ VALUES (
         @common_password_hash,
         '600111222',
         'barber',
-        'images/barbers/jon.png'
+        'irudiak/barbers/jon.png'
     ),
     (
         'Mikel Barberoa',
@@ -84,7 +84,7 @@ VALUES (
         @common_password_hash,
         '600333444',
         'barber',
-        'images/barbers/mikel.png'
+        'irudiak/barbers/mikel.png'
     ),
     (
         'Ander Barberoa',
@@ -92,7 +92,7 @@ VALUES (
         @common_password_hash,
         '600555666',
         'barber',
-        'images/barbers/ander.png'
+        'irudiak/barbers/ander.png'
     );
 -- Bezeroa gehitu (Client)
 INSERT INTO `erabiltzaileak` (
@@ -109,7 +109,7 @@ VALUES (
         @common_password_hash,
         '699888777',
         'client',
-        'images/bezero_proba.png'
+        'irudiak/bezero_proba.png'
     );
 -- Admina gehitu (Admin)
 INSERT INTO `erabiltzaileak` (
@@ -139,21 +139,21 @@ VALUES (
         'Moztu klasikoa, guraizeekin eta makinarekin.',
         30,
         20.00,
-        'images/services/ilea.png'
+        'irudiak/services/ilea.png'
     ),
     (
         'Bizarra',
         'Bizarraren forma ematea eta profilatzea.',
         20,
         15.00,
-        'images/services/bizarra.png'
+        'irudiak/services/bizarra.png'
     ),
     (
         'Konboa',
         'Ilea moztu eta bizarra txukundu zerbitzu osoa.',
         45,
         30.00,
-        'images/services/konboa.png'
+        'irudiak/services/konboa.png'
     );
 -- Probetarako hitzordu batzuk gehitu
 -- Bezero Froga (ID 4) books with Jon (ID 1)

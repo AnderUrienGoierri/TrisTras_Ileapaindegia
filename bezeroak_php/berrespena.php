@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db.php';
+require_once '../includes/db.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -12,7 +12,8 @@ if (!$hitzorduId) {
 }
 
 $pageTitle = 'Tristras - Erreserba Berretsia';
-require_once 'includes/header.php';
+$pageCSS = 'berrespena.css';
+require_once '../includes/header.php';
 
 $stmt = $pdo->prepare("
     SELECT a.*, s.izena as zerbitzu_izena, u.izena as langile_izena, u.posta as langile_posta, u.irudia as langile_irudia
@@ -33,8 +34,8 @@ if (!$hitzordua) {
 
 
 <!-- Top App Bar -->
-<header class="flex items-center justify-between p-4 sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-white/5 max-w-md mx-auto">
-    <a href="bezero_panela.php" class="flex size-10 shrink-0 items-center justify-center rounded-full text-slate-400 hover:bg-white/10 transition-colors">
+<header class="berrespena-goiburukoa shadow-lg">
+    <a href="bezero_panela.php" class="botoi-itzuli-txikia-gardena">
         <span class="material-symbols-outlined">arrow_back</span>
     </a>
     <h2 class="titulu-ertaina">Erreserba Berretsia</h2>
@@ -42,10 +43,10 @@ if (!$hitzordua) {
 </header>
 
 <!-- Main Content -->
-<main class="flex-1 flex flex-col items-center justify-start px-4 pt-6 pb-24 w-full max-w-md mx-auto relative">
+<main class="berrespena-nagusia">
     <!-- Success Header -->
     <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center size-16 rounded-full bg-emerald-500/20 text-emerald-500 mb-4 ring-1 ring-emerald-500/50 shadow-[0_0_40px_-5px_rgba(16,185,129,0.4)]">
+        <div class="baieztapen-ikono-nagusia">
             <span class="material-symbols-outlined text-[32px] font-bold">check</span>
         </div>
         <h1 class="titulu-nagusia mb-2">Hitzordua baieztatuta!</h1>
@@ -55,9 +56,9 @@ if (!$hitzordua) {
     <!-- Digital Ticket Card -->
     <div class="w-full panela-premium overflow-hidden relative group">
         <!-- Top Section: QR Code Simulation -->
-        <div class="p-8 flex flex-col items-center justify-center relative bg-gradient-to-b from-transparent to-black/20">
+        <div class="qr-atal-txartela">
             <div class="absolute inset-0 bg-primary/5 opacity-50"></div>
-            <div class="relative z-10 p-4 bg-white rounded-xl shadow-lg border-4 border-white/10">
+            <div class="qr-edukiontzia">
                 <div class="absolute inset-0 bg-emerald-500/30 blur-xl rounded-full scale-110 -z-10 animate-pulse"></div>
                 <!-- Imitatutako QR -->
                 <div class="size-36 bg-slate-100 flex items-center justify-center p-2 rounded">
@@ -79,7 +80,7 @@ if (!$hitzordua) {
                 <div class="relative">
                     <?php if ($hitzordua['langile_irudia']): ?>
                         <img alt="<?= htmlspecialchars($hitzordua['langile_izena']) ?>" class="size-12 rounded-full object-cover border-2 border-primary/30" 
-                             src="<?= htmlspecialchars($hitzordua['langile_irudia']) ?>">
+                             src="../<?= htmlspecialchars($hitzordua['langile_irudia']) ?>">
                     <?php else: ?>
                         <div class="size-12 rounded-full bg-slate-700 flex items-center justify-center border-2 border-primary/30">
                             <span class="material-symbols-outlined text-slate-500">person</span>
@@ -99,20 +100,20 @@ if (!$hitzordua) {
 
             <!-- Info Grid -->
             <div class="grid grid-cols-2 gap-4">
-                <div class="bg-background-light dark:bg-slate-900/50 p-3 rounded-xl border border-gray-100 dark:border-white/5">
-                    <div class="flex items-center gap-2 mb-1 text-slate-500 dark:text-slate-400">
+                <div class="hitzordu-info-laukia">
+                    <div class="flex items-center gap-2 mb-1 text-slate-400">
                         <span class="material-symbols-outlined ikono-sm">calendar_today</span>
                         <span class="text-xs font-medium uppercase">Data</span>
                     </div>
-                    <p class="font-mono text-sm font-semibold text-slate-900 dark:text-white tracking-tight"><?= date('M j', strtotime($hitzordua['data'])) ?></p>
+                    <p class="font-mono text-sm font-semibold text-white tracking-tight"><?= date('M j', strtotime($hitzordua['data'])) ?></p>
                     <p class="text-xs text-slate-500"><?= date('l', strtotime($hitzordua['data'])) ?></p>
                 </div>
-                <div class="bg-background-light dark:bg-slate-900/50 p-3 rounded-xl border border-gray-100 dark:border-white/5">
-                    <div class="flex items-center gap-2 mb-1 text-slate-500 dark:text-slate-400">
+                <div class="hitzordu-info-laukia">
+                    <div class="flex items-center gap-2 mb-1 text-slate-400">
                         <span class="material-symbols-outlined ikono-sm">schedule</span>
                         <span class="text-xs font-medium uppercase">Ordua</span>
                     </div>
-                    <p class="font-mono text-sm font-semibold text-slate-900 dark:text-white tracking-tight"><?= substr($hitzordua['hasiera'], 0, 5) ?></p>
+                    <p class="font-mono text-sm font-semibold text-white tracking-tight"><?= substr($hitzordua['hasiera'], 0, 5) ?></p>
                     <p class="text-xs text-emerald-500 font-medium">Garaiz</p>
                 </div>
             </div>
@@ -133,18 +134,18 @@ if (!$hitzordua) {
 </main>
 
 <!-- Footer Actions -->
-<div class="fixed bottom-0 left-0 w-full p-4 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur border-t border-white/5 z-40">
+<div class="berrespena-beheko-ekintzak">
     <div class="max-w-md mx-auto space-y-3">
-        <button class="w-full botoi-premium shadow-glow">
+        <button class="w-full botoi-premium shadow-lg">
             <span class="material-symbols-outlined">calendar_add_on</span>
             Egutegian Gehitu
         </button>
-        <a href="bezero_panela.php" class="w-full bg-transparent hover:bg-white/5 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-white/20 font-medium h-12 rounded-xl flex items-center justify-center gap-2 transition-colors">
+        <a href="bezero_panela.php" class="botoi-leuna-itzuli">
             Hasierara Itzuli
         </a>
     </div>
 </div>
 
-<?php require_once 'includes/footer.php'; ?>
+<?php require_once '../includes/footer.php'; ?>
 
 
