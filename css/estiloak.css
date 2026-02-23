@@ -1,0 +1,230 @@
+/* Tristras Barberoa - Pertsonalizatutako estiloak */
+
+/* Korritze-barra (Scrollbar) dotorea */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #16131f;
+}
+::-webkit-scrollbar-thumb {
+  background: #302942;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #472796;
+}
+
+/* Material Symbols ikonoen hobespenak */
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+.material-symbols-outlined.betea {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* Ikonoen tamaina pertsonalizatuak */
+.ikono-sm { font-size: 16px !important; }
+.ikono-md { font-size: 20px !important; }
+.ikono-lg { font-size: 24px !important; }
+.ikono-xl { font-size: 32px !important; }
+.ikono-xxl { font-size: 48px !important; }
+.ikono-hiper { font-size: 64px !important; }
+.ikono-erraldoi { font-size: 80px !important; }
+
+/* Beira-efektu (Glassmorphism) tresnak */
+.beira-txartela,
+.beira-panela {
+  background: rgba(34, 29, 47, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Hautatutako elementuen dirdira */
+.hautatutako-eraztuna {
+  box-shadow:
+    0 0 0 2px #472796,
+    0 0 12px rgba(71, 39, 150, 0.5);
+}
+
+/* Txartel digitalaren estiloak (berrespena.php) */
+.txartel-ebakidura {
+    position: relative;
+}
+.txartel-ebakidura::before, .txartel-ebakidura::after {
+    content: '';
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    background-color: #0f172a; /* Goiburuko bg-arekin bat dator */
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+.txartel-ebakidura::before { left: -12px; }
+.txartel-ebakidura::after { right: -12px; }
+
+.linea-etena {
+    background-image: linear-gradient(to right, #4b5563 50%, rgba(255,255,255,0) 0%);
+    background-position: bottom;
+    background-size: 10px 1px;
+    background-repeat: repeat-x;
+}
+
+/* Korritze-barra ezkutatzeko tresna */
+.korritze-barra-ezkutatu {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.korritze-barra-ezkutatu::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hero eta Atzeko planoko estiloak */
+.hero-irudia {
+    background-image: url('../images/hero_barber.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.giro-dirdira-nagusia {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(71, 39, 150, 0.3);
+    border-radius: 9999px;
+    filter: blur(100px);
+    transform: translate(50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.giro-dirdira-sekundarioa {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(20, 184, 166, 0.1);
+    border-radius: 9999px;
+    filter: blur(80px);
+    transform: translate(-33%, 33%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body {
+  min-height: max(884px, 100dvh);
+}
+
+/* Mobile-First: Pantaila handiagoetarako egokitzapenak */
+@media (min-width: 768px) {
+  .max-w-md {
+    max-width: 600px !important; /* Made slightly wider for better desktop presentation */
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 100px rgba(0,0,0,0.5);
+    min-height: 100vh;
+  }
+}
+
+@media (min-width: 1280px) {
+  .max-w-md {
+    max-width: 800px !important; /* Even wider for very large screens */
+  }
+}
+
+
+
+/* Semantika eta Tipografia */
+.titulu-nagusia {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: white;
+}
+
+.titulu-ertaina {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  color: white;
+}
+
+.titulu-txikia {
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+}
+
+.etiketa-txikia {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+}
+
+.testu-lagungarria {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* Osagaiak */
+.panela-premium {
+  background-color: rgba(30, 41, 59, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.botoi-premium {
+  background: var(--primary);
+  color: white;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.botoi-premium:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.input-testu {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: white;
+  transition: all 0.2s;
+}
+
+.input-testu:focus {
+  outline: none;
+  border-color: #472796;
+  box-shadow: 0 0 0 2px rgba(71, 39, 150, 0.5);
+}
